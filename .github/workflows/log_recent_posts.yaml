@@ -1,0 +1,23 @@
+name: 最近編集した投稿を日報に記録する
+
+on:
+  workflow_dispatch:
+  schedule:
+    # UTCの15:05はJSTだと00:05
+    - cron: '5 15 * * *'
+
+jobs:
+  title_validation:
+    runs-on: ubuntu-16.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+    - run: npm install
+    - name: log_recent_updated_posts
+      env:
+        ESA_TEAM_NAME: ${{ secrets.ESA_TEAM_NAME }}      
+        ESA_ACCESS_TOKEN: ${{ secrets.ESA_ACCESS_TOKEN }}      
+      run: npx ts-node src/index.ts
