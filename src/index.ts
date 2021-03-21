@@ -23,6 +23,7 @@ export type EsaPost = {
 
 export type EsaSearchResult = {
     posts: EsaPost[];
+    total_count: number;
 }
 
 const env = process.env
@@ -72,7 +73,7 @@ async function createOrUpdatePost(
     title: string,
     appendedText: string,
   ): Promise<EsaPost> {
-    const response = await axios.get(`/v1/teams/${esaConfig.teamName}/posts`, {
+    const response = await axios.get<EsaSearchResult>(`/v1/teams/${esaConfig.teamName}/posts`, {
       params: {
         q: `category:${category} title:${title}`,
       },
