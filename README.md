@@ -4,3 +4,9 @@
 
 ![その日に修正した記事一覧](https://cdn-ak.f.st-hatena.com/images/fotolife/s/syou6162/20210321/20210321182206_original.png)
 ![いつ頃修正していたか分かるように](https://cdn-ak.f.st-hatena.com/images/fotolife/s/syou6162/20210321/20210321182211_original.png)
+
+## 使い方
+GitHub Actions上で動きます。リポジトリのSecretsに以下のものを設定しましょう。
+
+- `ESA_TEAM_NAME`: esaのチーム名
+- `ESA_ACCESS_TOKEN`: esaのアクセストークン
