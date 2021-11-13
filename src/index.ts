@@ -113,7 +113,7 @@ const yesterday = subDays(today, 1)
 getUpdatedPosts(axiosClient, esaConfig, yesterday, today).then((result: EsaSearchResult) => {
   const category = `日報/${format(convertToTimeZone(yesterday, { timeZone: timeZone }), 'yyyy/MM/dd')}`
   const posts = result.posts.filter((post: EsaPost) => {
-    post.category != category
+    return post.category !== category
   })
   if (posts.length > 0) {
     let text = "## 本日修正された記事\n"
