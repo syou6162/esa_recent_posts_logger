@@ -70,18 +70,21 @@ async function createOrUpdatePost(
     axios: AxiosInstance,
     esaConfig: EsaConfig,
     category: string,
-    title: string,
     appendedText: string,
   ): Promise<EsaPost> {
     const response = await axios.get<EsaSearchResult>(`/v1/teams/${esaConfig.teamName}/posts`, {
       params: {
-        q: `category:${category} title:${title}`,
+        q: `category:${category}`,
       },
     })
+    if (response.data.total_count > 1) {
+      console.log('複数の日報が存在します');
+      process.exit(1);
+    }
     if (response.data.total_count === 0) {
       return axios.post<EsaPost>(`/v1/teams/${esaConfig.teamName}/posts`, {
         post: {
-          name: title,
+          name: '日報',
           category,
           body_md: appendedText,
           wip: false,
@@ -92,7 +95,6 @@ async function createOrUpdatePost(
     }
     return axios.patch<EsaPost>(`/v1/teams/${esaConfig.teamName}/posts/${response.data.posts[0].number}`, {
       post: {
-        name: title,
         category,
         body_md: `${response.data.posts[0].body_md}\n${appendedText}`,
         wip: false,
@@ -115,7 +117,7 @@ getUpdatedPosts(axiosClient, esaConfig, yesterday, today).then((result: EsaSearc
             text += `- [${post.full_name}](https://${esaConfig.teamName}.esa.io/posts/${post.number})\n`
         })
         const category = `日報/${format(convertToTimeZone(yesterday, { timeZone: timeZone }), 'yyyy/MM/dd')}`
-        createOrUpdatePost(axiosClient, esaConfig, category, "日報", text).catch(err => {
+        createOrUpdatePost(axiosClient, esaConfig, category, text).catch(err => {
             console.log(err);
             process.exit(1);
         })
