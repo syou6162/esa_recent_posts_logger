@@ -111,12 +111,15 @@ const today = new Date()
 const yesterday = subDays(today, 1)
 
 getUpdatedPosts(axiosClient, esaConfig, yesterday, today).then((result: EsaSearchResult) => {
-  if (result.posts.length > 0) {
+  const category = `日報/${format(convertToTimeZone(yesterday, { timeZone: timeZone }), 'yyyy/MM/dd')}`
+  const posts = result.posts.filter((post: EsaPost) => {
+    return post.category !== category
+  })
+  if (posts.length > 0) {
     let text = "## 本日修正された記事\n"
-    result.posts.forEach((post: EsaPost) => {
+    posts.forEach((post: EsaPost) => {
       text += `- [${post.full_name}](https://${esaConfig.teamName}.esa.io/posts/${post.number})\n`
     })
-    const category = `日報/${format(convertToTimeZone(yesterday, { timeZone: timeZone }), 'yyyy/MM/dd')}`
     createOrUpdatePost(axiosClient, esaConfig, category, text).catch(err => {
       console.log(err);
       process.exit(1);

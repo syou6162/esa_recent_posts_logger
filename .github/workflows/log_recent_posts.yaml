@@ -7,7 +7,7 @@ on:
     - cron: '5 15 * * *'
 
 jobs:
-  title_validation:
+  log_recent_updated_posts:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
