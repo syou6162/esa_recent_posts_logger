@@ -19,7 +19,7 @@
     "typescript": "4.8.4"
   },
   "dependencies": {
-    "axios": "^0.27.0",
+    "axios": "^1.0.0",
     "date-fns": "^2.21.1",
     "date-fns-timezone": "^0.1.4"
   }
