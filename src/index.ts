@@ -55,8 +55,8 @@ async function getUpdatedPosts(
   from: Date,
   to: Date,
 ): Promise<EsaSearchResult> {
-  const fromStr = `${format(convertToTimeZone(from, { timeZone: timeZone }), 'yyyy-MM-dd')}`
-  const toStr = `${format(convertToTimeZone(to, { timeZone: timeZone }), 'yyyy-MM-dd')}`
+  const fromStr = `${format(convertToTimeZone(from, { timeZone: timeZone }), 'yyyy-MM-dd') as string}`
+  const toStr = `${format(convertToTimeZone(to, { timeZone: timeZone }), 'yyyy-MM-dd') as string}`
   const response = await axios.get<EsaSearchResult>(`/v1/teams/${esaConfig.teamName}/posts`, {
     params: {
       q: `updated:>=${fromStr} updated:<${toStr}`,
@@ -111,7 +111,7 @@ const today = new Date()
 const yesterday = subDays(today, 1)
 
 getUpdatedPosts(axiosClient, esaConfig, yesterday, today).then((result: EsaSearchResult) => {
-  const category = `日報/${format(convertToTimeZone(yesterday, { timeZone: timeZone }), 'yyyy/MM/dd')}`
+  const category = `日報/${format(convertToTimeZone(yesterday, { timeZone: timeZone }), 'yyyy/MM/dd') as string}`
   const posts = result.posts.filter((post: EsaPost) => {
     return post.category !== category
   })
