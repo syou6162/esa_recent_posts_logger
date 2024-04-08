@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "axios": "^1.0.0",
-    "date-fns": "^3.0.0",
+    "date-fns": "^2.21.1",
     "date-fns-timezone": "^0.1.4"
   }
 }
