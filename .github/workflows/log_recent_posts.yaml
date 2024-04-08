@@ -18,6 +18,6 @@ jobs:
     - run: npm install
     - name: log_recent_updated_posts
       env:
-        ESA_TEAM_NAME: ${{ secrets.ESA_TEAM_NAME }}      
-        ESA_ACCESS_TOKEN: ${{ secrets.ESA_ACCESS_TOKEN }}      
+        ESA_TEAM_NAME: ${{ secrets.ESA_TEAM_NAME }}
+        ESA_ACCESS_TOKEN: ${{ secrets.ESA_ACCESS_TOKEN }}
       run: npx ts-node src/index.ts
