@@ -10,9 +10,8 @@ export type EsaConfig = {
 }
 
 export type EsaPost = {
-  // esaのレスポンスを全部camelcaseに変換するのは面倒なので、ここだけlintは無視する
-  body_md: string; // eslint-disable-line camelcase
-  body_html: string; // eslint-disable-line camelcase
+  body_md: string;
+  body_html: string;
   number: number;
   name: string;
   category: string;
