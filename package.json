@@ -11,9 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "0.14.4",
-    "@types/node": "22.15.31",
-    "@typescript-eslint/eslint-plugin": "8.34.0",
-    "@typescript-eslint/parser": "8.34.0",
+    "@types/node": "22.15.32",
+    "@typescript-eslint/eslint-plugin": "8.34.1",
+    "@typescript-eslint/parser": "8.34.1",
     "eslint": "9.29.0",
     "ts-node": "10.9.2",
     "typescript": "5.8.3"
