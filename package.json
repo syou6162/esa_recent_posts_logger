@@ -12,9 +12,9 @@
   "devDependencies": {
     "@types/axios": "0.14.4",
     "@types/node": "22.16.5",
-    "@typescript-eslint/eslint-plugin": "8.37.0",
-    "@typescript-eslint/parser": "8.37.0",
-    "eslint": "9.31.0",
+    "@typescript-eslint/eslint-plugin": "8.38.0",
+    "@typescript-eslint/parser": "8.38.0",
+    "eslint": "9.32.0",
     "ts-node": "10.9.2",
     "typescript": "5.8.3"
   },
