@@ -14,7 +14,7 @@
     "@types/node": "24.13.3",
     "@typescript-eslint/eslint-plugin": "8.64.0",
     "@typescript-eslint/parser": "8.64.0",
-    "eslint": "9.39.5",
+    "eslint": "10.7.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3"
   },
